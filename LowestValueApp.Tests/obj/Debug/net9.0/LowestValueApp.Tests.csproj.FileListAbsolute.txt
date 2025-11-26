@@ -96,6 +96,7 @@
 /Users/Alex/data/LowestValueSolution/LowestValueApp.Tests/obj/Debug/net9.0/LowestValueApp.Tests.AssemblyInfoInputs.cache
 /Users/Alex/data/LowestValueSolution/LowestValueApp.Tests/obj/Debug/net9.0/LowestValueApp.Tests.AssemblyInfo.cs
 /Users/Alex/data/LowestValueSolution/LowestValueApp.Tests/obj/Debug/net9.0/LowestValueApp.Tests.csproj.CoreCompileInputs.cache
+/Users/Alex/data/LowestValueSolution/LowestValueApp.Tests/obj/Debug/net9.0/LowestValueApp.Tests.sourcelink.json
 /Users/Alex/data/LowestValueSolution/LowestValueApp.Tests/obj/Debug/net9.0/LowestVa.2BFD7C99.Up2Date
 /Users/Alex/data/LowestValueSolution/LowestValueApp.Tests/obj/Debug/net9.0/LowestValueApp.Tests.dll
 /Users/Alex/data/LowestValueSolution/LowestValueApp.Tests/obj/Debug/net9.0/refint/LowestValueApp.Tests.dll

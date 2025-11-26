@@ -21,6 +21,7 @@
 /Users/Alex/data/LowestValueSolution/LowestValueApp/obj/Debug/net9.0/LowestValueApp.AssemblyInfoInputs.cache
 /Users/Alex/data/LowestValueSolution/LowestValueApp/obj/Debug/net9.0/LowestValueApp.AssemblyInfo.cs
 /Users/Alex/data/LowestValueSolution/LowestValueApp/obj/Debug/net9.0/LowestValueApp.csproj.CoreCompileInputs.cache
+/Users/Alex/data/LowestValueSolution/LowestValueApp/obj/Debug/net9.0/LowestValueApp.sourcelink.json
 /Users/Alex/data/LowestValueSolution/LowestValueApp/obj/Debug/net9.0/LowestValueApp.dll
 /Users/Alex/data/LowestValueSolution/LowestValueApp/obj/Debug/net9.0/refint/LowestValueApp.dll
 /Users/Alex/data/LowestValueSolution/LowestValueApp/obj/Debug/net9.0/LowestValueApp.pdb

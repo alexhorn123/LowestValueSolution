@@ -23,7 +23,7 @@ namespace LowestValueApp
                 Console.WriteLine("5. Exit");
                 Console.Write("Selection: ");
 
-                string choice = Console.ReadLine();
+                string? choice = Console.ReadLine();
 
                 try
                 {
@@ -72,17 +72,37 @@ namespace LowestValueApp
         static void RunManualInput(ValueFinder finder)
         {
             Console.WriteLine("Enter numbers separated by spaces:");
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
 
-            var numbers = new List<int>();
-            foreach (var s in input.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+            if (string.IsNullOrWhiteSpace(input))
             {
-                if (int.TryParse(s, out int num))
-                    numbers.Add(num);
+                Console.WriteLine("❌ No input provided.");
+                return;
             }
 
-            int lowest = finder.GetLowestValue(numbers);
-            Console.WriteLine($"Lowest value (manual input): {lowest}");
+            var numbers = new List<int>();
+
+            foreach (var token in input.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (int.TryParse(token, out int value))
+                {
+                    numbers.Add(value);
+                }
+                else
+                {
+                    Console.WriteLine($"⚠️ Ignoring non-numeric value: '{token}'");
+                }
+            }
+
+            if (numbers.Count == 0)
+            {
+                Console.WriteLine("❌ No valid numbers entered.");
+            }
+            else
+            {
+                int lowest = finder.GetLowestValue(numbers);
+                Console.WriteLine($"Lowest value: {lowest}");
+            }
         }
 
         static void RunRandomList(ValueFinder finder)
@@ -99,37 +119,50 @@ namespace LowestValueApp
             Console.WriteLine($"Lowest value (random list): {lowest}");
         }
 
-static void RunFileInput(ValueFinder finder)
-{
-    Console.WriteLine("Enter the path to your file (default: numbers.txt):");
-    string path = Console.ReadLine();
-
-    // If user presses Enter, default to numbers.txt
-    if (string.IsNullOrWhiteSpace(path))
-    {
-        path = "numbers.txt";
-    }
-
-    if (!File.Exists(path))
-    {
-        Console.WriteLine($"File not found: {path}");
-        return;
-    }
-
-    var numbers = new List<int>();
-    foreach (var line in File.ReadAllLines(path))
-    {
-        foreach (var s in line.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+        static void RunFileInput(ValueFinder finder)
         {
-            if (int.TryParse(s, out int num))
-                numbers.Add(num);
+            Console.WriteLine("Enter the path to your file (default: numbers.txt):");
+            string? path = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                path = "numbers.txt";
+            }
+
+            if (!File.Exists(path))
+            {
+                Console.WriteLine($"❌ File not found: {path}");
+                return;
+            }
+
+            // Read entire file and split on any whitespace (spaces, tabs, newlines)
+            var content = File.ReadAllText(path);
+            var tokens = content.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+
+            var numbers = new List<int>();
+
+            foreach (var token in tokens)
+            {
+                if (int.TryParse(token, out int num))
+                {
+                    numbers.Add(num);
+                }
+                else
+                {
+                    Console.WriteLine($"⚠️ Ignoring non-numeric value: '{token}'");
+                }
+            }
+
+            if (numbers.Count == 0)
+            {
+                Console.WriteLine("❌ No valid numbers found in file.");
+            }
+            else
+            {
+                Console.WriteLine("Loaded numbers: " + string.Join(", ", numbers));
+                int lowest = finder.GetLowestValue(numbers);
+                Console.WriteLine($"Lowest value (file input): {lowest}");
+            }
         }
-    }
-
-    Console.WriteLine("Loaded numbers: " + string.Join(", ", numbers));
-    int lowest = finder.GetLowestValue(numbers);
-    Console.WriteLine($"Lowest value (file input): {lowest}");
-}
-
     }
 }
