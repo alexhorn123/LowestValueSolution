@@ -6,7 +6,7 @@ A simple C# console application that finds the lowest integer in a list. Include
 Clone or download this repository:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/alexhorn123/LowestValueSolution
 cd LowestValueSolution
 ```
 Ensure .NET SDK is installed This project targets .NET 9.0. Check your version:
